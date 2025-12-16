@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharkfit | El mejor Gimnasio de San Bernardo</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#050505',
+                        card: '#111111',
+                        accent: '#00f0ff',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-title {
+            font-family: 'Syncopate', sans-serif;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+        }
+
+        .bg-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        [x-cloak] {
+            display: none !important;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+    \n        .service-card-gap { background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url(assets/images/cardio-gap.png); background-size: cover; background-position: center; }\n        .service-card-hiit { background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url(assets/images/hiit-training.png); background-size: cover; background-position: center; }\n        .service-card-sharkbox { background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url(assets/images/sharkbox.png); background-size: cover; background-position: center; }\n        .service-card-functional { background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url(assets/images/functional.png); background-size: cover; background-position: center; }\n        .service-card:hover { background-size: 110% auto !important; }\n    </style>
+</head>
+
+<body class="bg-dark text-white overflow-x-hidden" x-data="{ scrolled: false, faqOpen: {} }"
+    @scroll.window="scrolled = (window.pageYOffset > 50)">
+
+    <nav :class="scrolled ? 'bg-dark/90 bg-blur border-b border-white/10 py-3' : 'bg-transparent py-6'"
+        class="fixed w-full z-50 transition-all duration-500">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <div class="bg-accent p-1 rounded-sm">
+                    <i class="fas fa-bolt text-black text-xl"></i>
+                </div>
+                <span class="font-title text-xl tracking-tighter">SHARK<span class="text-accent">FIT</span></span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-10 text-xs font-bold uppercase tracking-[0.2em]">
+                <a href="#inicio" class="hover:text-accent transition">Inicio</a>
+                <a href="#nosotros" class="hover:text-accent transition">Nosotros</a>
+                <a href="#servicios" class="hover:text-accent transition">Servicios</a>
+                <a href="#planes" class="hover:text-accent transition">Planes</a>
+                <a href="#sedes" class="hover:text-accent transition">Sedes</a>
+                <a href="https://wa.me/56935669362?text=Hola%20Sharkfit%2C%20quiero%20agendar%20mi%20clase%20de%20prueba"
+                    target="_blank"
+                    class="border border-accent px-5 py-2 text-accent hover:bg-accent hover:text-black transition">Únete</a>
+            </div>
+
+            <button class="lg:hidden text-accent text-2xl">
+                <i class="fas fa-bars-staggered"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/images/hero-gym.png"
+                class="w-full h-full object-cover opacity-50">
+            <div class="absolute inset-0 bg-gradient-to-r from-dark via-dark/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl">
+                <span
+                    class="inline-block bg-accent/10 text-accent border border-accent/20 px-3 py-1 text-xs font-bold tracking-widest uppercase mb-6">
+                    San Bernardo, Chile
+                </span>
+                <h1 class="text-6xl md:text-8xl font-black font-title leading-none mb-6">
+                    ENTRENA <br> <span class="text-accent text-glow">SIN LÍMITES</span>
+                </h1>
+                <p class="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed">
+                    Terminarás amando el ejercicio... o al menos odiándolo menos. Elevamos el estándar del fitness en
+                    San Bernardo con tecnología de vanguardia y coaches expertos.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://wa.me/56935669362?text=Hola%20Sharkfit%2C%20quiero%20agendar%20mi%20clase%20de%20prueba"
+                        target="_blank"
+                        class="bg-accent text-black px-8 py-4 font-black uppercase text-sm flex items-center justify-center gap-2 hover:bg-white transition-colors duration-300">
+                        Clase de Prueba <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#servicios"
+                        class="bg-white/5 border border-white/10 px-8 py-4 font-black uppercase text-sm hover:bg-white/10 transition-colors">
+                        Explorar Clases
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS SECTION -->
+    <section class="py-12 border-y border-white/5 bg-card/50">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-3xl font-black text-accent">+1000</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Metros Cuadrados</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-accent">+50</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Máquinas Pro</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-accent">15</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Profesores</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-accent">5</p>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest mt-1">Sedes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="nosotros" class="py-24 bg-gradient-to-b from-dark to-card/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">¿Por qué <span
+                        class="text-accent">Sharkfit</span>?</h2>
+                <div class="h-1 w-20 bg-accent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">y eso lo vas a sentir desde la primera clase</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-card/50 border border-white/5 p-8 rounded-2xl hover:border-accent/30 transition-all duration-500 reveal service-card">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-accent text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Comunidad Real</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        No vendemos membresías eternas que nunca usas, te llevamos a la meta. Pensé que venía a
+                        entrenar, pero terminé con nuevos amigos y una adicción rara al ejercicio.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-card/50 border border-white/5 p-8 rounded-2xl hover:border-accent/30 transition-all duration-500 reveal service-card">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-dumbbell text-accent text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Entrenamiento Efectivo</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        No soy de hacer ejercicio, pero aquí no te dan opción… y me encanta. Métodos probados que dan
+                        resultados reales.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-card/50 border border-white/5 p-8 rounded-2xl hover:border-accent/30 transition-all duration-500 reveal service-card">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heart-pulse text-accent text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Ambiente Motivador</h3>
+                    <p class="text-gray-400 leading-relaxed">
+                        Si estás dudando, ven a probar… lo peor que puede pasar es que te enamores de Sharkfit (o que
+                        sudes mucho).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="servicios" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Nuestras <span
+                        class="text-accent">Clases</span></h2>
+                <div class="h-1 w-20 bg-accent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400">con risas incluidas</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cardio GAP -->
+                <div
+                    class="bg-card border border-white/5 p-8 rounded-2xl hover:border-accent/50 transition-all duration-500 reveal service-card group service-card-gap">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-fire text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cardio GAP</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Glúteos, Abdomen y Piernas… porque sí importan (y se notan).
+                    </p>
+                </div>
+
+                <!-- Cardio HIIT -->
+                <div
+                    class="bg-card border border-white/5 p-8 rounded-2xl hover:border-accent/50 transition-all duration-500 reveal service-card group service-card-hiit">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bolt text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cardio HIIT</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Quema grasa rápido y entiende por qué la gente odia y ama los burpees al mismo tiempo.
+                    </p>
+                </div>
+
+                <!-- SharkBox -->
+                <div
+                    class="bg-card border border-white/5 p-8 rounded-2xl hover:border-accent/50 transition-all duration-500 reveal service-card group service-card-sharkbox">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-hand-fist text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SharkBox</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Cardio y fuerza con técnicas de boxeo (no garantizamos que aprendas a pelear, pero sí a moverte
+                        como Rocky).
+                    </p>
+                </div>
+
+                <!-- Entrenamiento Funcional -->
+                <div
+                    class="bg-card border border-white/5 p-8 rounded-2xl hover:border-accent/50 transition-all duration-500 reveal service-card group service-card-functional">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-person-running text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Entrenamiento Funcional</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Levanta, empuja, salta y descubre músculos que no sabías que tenías.
+                    </p>
+                </div>
+
+                <!-- Entrenamiento Focalizado -->
+                <div
+                    class="bg-card border border-white/5 p-8 rounded-2xl hover:border-accent/50 transition-all duration-500 reveal service-card group">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-bullseye text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Entrenamiento Focalizado</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Sesiones diseñadas para que logres tu objetivo (o al menos para que no te duela tanto la
+                        espalda).
+                    </p>
+                </div>
+
+                <!-- Musculación -->
+                <div
+                    class="bg-card border border-white/5 p-8 rounded-2xl hover:border-accent/50 transition-all duration-500 reveal service-card group">
+                    <div
+                        class="w-14 h-14 bg-gradient-to-br from-accent/20 to-accent/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-dumbbell text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Musculación</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Acceso total a zona de musculación con máquinas de última generación y pesos libres.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://wa.me/56935669362?text=Hola%20Sharkfit%2C%20quiero%20probar%20una%20clase"
+                    target="_blank"
+                    class="inline-block bg-white/5 border border-accent px-8 py-4 font-bold uppercase text-sm hover:bg-accent hover:text-black transition-all">
+                    Dale, lo intento. Al fin y al cabo, todos empezamos por algún lado.
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANS SECTION -->
+    <section id="planes" class="py-24 bg-card/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-black mb-4 uppercase tracking-tighter">Elige tu <span
+                        class="text-accent">Membresía</span></h2>
+                <div class="h-1 w-20 bg-accent mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-card border border-white/5 p-8 hover:border-accent/50 transition-all duration-500 group">
+                    <h3 class="text-xl font-bold mb-2">PLAN MENSUAL</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black">$29.990</span>
+                        <span class="text-gray-500">/mes</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li><i class="fas fa-check text-accent mr-2"></i> Acceso Total Musculación</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Evaluación inicial</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Camarines y Duchas</li>
+                    </ul>
+                    <a href="https://wa.me/56935669362?text=Hola%20Sharkfit%2C%20quiero%20información%20del%20Plan%20Mensual"
+                        target="_blank"
+                        class="block text-center py-3 border border-white/20 group-hover:bg-white group-hover:text-black transition font-bold uppercase text-xs">
+                        Comprar Ahora
+                    </a>
+                </div>
+
+                <div
+                    class="bg-card border-2 border-accent p-8 relative scale-105 z-10 shadow-[0_0_30px_rgba(0,240,255,0.15)]">
+                    <div
+                        class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black px-4 py-1 text-[10px] font-black uppercase">
+                        Recomendado</div>
+                    <h3 class="text-xl font-bold mb-2">PLAN ANUAL</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black">$249.990</span>
+                        <span class="text-gray-500">/año</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li><i class="fas fa-check text-accent mr-2"></i> Todo el Plan Mensual</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> 2 Invitados gratis al mes</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Polera Sharkfit de regalo</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Congelamiento de plan</li>
+                    </ul>
+                    <a href="https://wa.me/56935669362?text=Hola%20Sharkfit%2C%20quiero%20información%20del%20Plan%20Anual"
+                        target="_blank"
+                        class="block text-center py-3 bg-accent text-black hover:bg-white transition font-bold uppercase text-xs">
+                        Comprar Ahora
+                    </a>
+                </div>
+
+                <div class="bg-card border border-white/5 p-8 hover:border-accent/50 transition-all duration-500 group">
+                    <h3 class="text-xl font-bold mb-2">PLAN SEMESTRAL</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-black">$149.990</span>
+                        <span class="text-gray-500">/6 meses</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-gray-400 text-sm">
+                        <li><i class="fas fa-check text-accent mr-2"></i> Acceso a todas las sucursales</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Clases grupales ilimitadas</li>
+                        <li><i class="fas fa-check text-accent mr-2"></i> Evaluación mensual</li>
+                    </ul>
+                    <a href="https://wa.me/56935669362?text=Hola%20Sharkfit%2C%20quiero%20información%20del%20Plan%20Semestral"
+                        target="_blank"
+                        class="block text-center py-3 border border-white/20 group-hover:bg-white group-hover:text-black transition font-bold uppercase text-xs">
+                        Comprar Ahora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS SECTION -->
+    <section id="sedes" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Nuestras <span
+                        class="text-accent">Sedes</span></h2>
+                <div class="h-1 w-20 bg-accent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400">No es digital, es real. Ven a vivirlo</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sede Nogales -->
+                <div
+                    class="bg-card border border-white/10 rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-500 reveal group">
+                    <div class="h-48 bg-gradient-to-br from-accent/20 to-dark relative overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.630248479371!2d-70.7042!3d-33.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662da0f56a00001%3A0x6b2e!2sNogales%2082%2C%20San%20Bernardo!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl"
+                            class="w-full h-full grayscale opacity-60" style="border:0;" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Sede Nogales</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                            Av. Nogales 82, San Bernardo
+                        </p>
+                        <p class="text-xs text-gray-500 mb-4">
+                            Av portales con barros arana
+                        </p>
+                        <p class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            Sábados de 9:00h a 12:00h
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://wa.me/56935669362?text=Hola%20Sharkfit%20Nogales" target="_blank"
+                                class="flex-1 text-center py-2 bg-accent text-black font-bold text-xs uppercase hover:bg-white transition">
+                                <i class="fab fa-whatsapp mr-1"></i> WhatsApp
+                            </a>
+                            <a href="https://www.google.com/maps?q=Nogales+82,+San+Bernardo" target="_blank"
+                                class="flex-1 text-center py-2 border border-white/20 font-bold text-xs uppercase hover:bg-white/10 transition">
+                                <i class="fas fa-map mr-1"></i> Ver Mapa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sede Colón -->
+                <div
+                    class="bg-card border border-white/10 rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-500 reveal group">
+                    <div class="h-48 bg-gradient-to-br from-accent/20 to-dark relative overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.630248479371!2d-70.7042!3d-33.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662da0f56a00001%3A0x6b2e!2sColon%20Sur%20907%2C%20San%20Bernardo!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl"
+                            class="w-full h-full grayscale opacity-60" style="border:0;" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Sede Colón</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                            Av Colón Sur 907, San Bernardo
+                        </p>
+                        <p class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            Sábados de 9:00h a 12:00h
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://wa.me/56963368989?text=Hola%20Sharkfit%20Colon" target="_blank"
+                                class="flex-1 text-center py-2 bg-accent text-black font-bold text-xs uppercase hover:bg-white transition">
+                                <i class="fab fa-whatsapp mr-1"></i> WhatsApp
+                            </a>
+                            <a href="https://maps.app.goo.gl/KZ5FYydtN3AJ87m26" target="_blank"
+                                class="flex-1 text-center py-2 border border-white/20 font-bold text-xs uppercase hover:bg-white/10 transition">
+                                <i class="fas fa-map mr-1"></i> Ver Mapa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sede El Bosque -->
+                <div
+                    class="bg-card border border-white/10 rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-500 reveal group">
+                    <div class="h-48 bg-gradient-to-br from-accent/20 to-dark relative overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.630248479371!2d-70.7042!3d-33.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662da0f56a00001%3A0x6b2e!2sJorge%20Luco%20469%2C%20El%20Bosque!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl"
+                            class="w-full h-full grayscale opacity-60" style="border:0;" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Sede El Bosque</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                            Jorge Luco 469, El Bosque
+                        </p>
+                        <p class="text-xs text-gray-500 mb-4">
+                            A 2 cuadras del metro observatorio
+                        </p>
+                        <p class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            Sábados de 9:00h a 12:00h
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://wa.me/56989399889?text=Hola%20Sharkfit%20El%20Bosque" target="_blank"
+                                class="flex-1 text-center py-2 bg-accent text-black font-bold text-xs uppercase hover:bg-white transition">
+                                <i class="fab fa-whatsapp mr-1"></i> WhatsApp
+                            </a>
+                            <a href="https://maps.app.goo.gl/58rFDRTt5MMEvADS9" target="_blank"
+                                class="flex-1 text-center py-2 border border-white/20 font-bold text-xs uppercase hover:bg-white/10 transition">
+                                <i class="fas fa-map mr-1"></i> Ver Mapa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sede La Cisterna -->
+                <div
+                    class="bg-card border border-white/10 rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-500 reveal group">
+                    <div class="h-48 bg-gradient-to-br from-accent/20 to-dark relative overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.630248479371!2d-70.7042!3d-33.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662da0f56a00001%3A0x6b2e!2sSanta%20Corina%200179%2C%20La%20Cisterna!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl"
+                            class="w-full h-full grayscale opacity-60" style="border:0;" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Sede La Cisterna</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                            Santa Corina 0179, La Cisterna
+                        </p>
+                        <p class="text-xs text-gray-500 mb-4">
+                            Metro Ovalle a dos cuadras
+                        </p>
+                        <p class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            Sábados de 9:00h a 12:00h
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://wa.me/56963368989?text=Hola%20Sharkfit%20La%20Cisterna" target="_blank"
+                                class="flex-1 text-center py-2 bg-accent text-black font-bold text-xs uppercase hover:bg-white transition">
+                                <i class="fab fa-whatsapp mr-1"></i> WhatsApp
+                            </a>
+                            <a href="https://maps.app.goo.gl/SyZVCxt7WdaXW68BA" target="_blank"
+                                class="flex-1 text-center py-2 border border-white/20 font-bold text-xs uppercase hover:bg-white/10 transition">
+                                <i class="fas fa-map mr-1"></i> Ver Mapa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sede Buin -->
+                <div
+                    class="bg-card border border-white/10 rounded-2xl overflow-hidden hover:border-accent/50 transition-all duration-500 reveal group">
+                    <div class="h-48 bg-gradient-to-br from-accent/20 to-dark relative overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3324.630248479371!2d-70.7042!3d-33.59!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662da0f56a00001%3A0x6b2e!2sPanamericana%20Sur%20Km%2033%2C%20Buin!5e0!3m2!1ses-419!2scl!4v1700000000000!5m2!1ses-419!2scl"
+                            class="w-full h-full grayscale opacity-60" style="border:0;" allowfullscreen=""
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-3">Sede Buin</h3>
+                        <p class="text-gray-400 text-sm mb-4">
+                            <i class="fas fa-map-marker-alt text-accent mr-2"></i>
+                            Panamericana Sur Km 33 #0360
+                        </p>
+                        <p class="text-xs text-gray-500 mb-4">
+                            Buin, Región Metropolitana
+                        </p>
+                        <p class="text-sm text-gray-400 mb-4">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            Sábados de 9:00h a 12:00h
+                        </p>
+                        <div class="flex gap-3">
+                            <a href="https://wa.me/56983347010?text=Hola%20Sharkfit%20Buin" target="_blank"
+                                class="flex-1 text-center py-2 bg-accent text-black font-bold text-xs uppercase hover:bg-white transition">
+                                <i class="fab fa-whatsapp mr-1"></i> WhatsApp
+                            </a>
+                            <a href="https://maps.app.goo.gl/NnoobKabMLipKtsWA" target="_blank"
+                                class="flex-1 text-center py-2 border border-white/20 font-bold text-xs uppercase hover:bg-white/10 transition">
+                                <i class="fas fa-map mr-1"></i> Ver Mapa
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-24 bg-card/30">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-5xl font-black mb-4 uppercase tracking-tighter">Preguntas <span
+                        class="text-accent">Frecuentes</span></h2>
+                <div class="h-1 w-20 bg-accent mx-auto mb-6"></div>
+                <p class="text-xl text-gray-400">Porque seguro te estás preguntando algo pero no quieres preguntar</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div class="bg-card border border-white/10 rounded-xl overflow-hidden">
+                    <button @click="faqOpen[1] = !faqOpen[1]"
+                        class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg">¿Cuánto cuesta?</span>
+                        <i class="fas fa-chevron-down transition-transform" :class="faqOpen[1] ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="faqOpen[1]" x-collapse class="px-6 pb-6 text-gray-400">
+                        Depende del plan, pero lo que sí te garantizamos es que vale la pena cada peso. Tenemos planes
+                        desde $29.990 mensuales hasta anuales con beneficios adicionales.
+                    </div>
+                </div>
+
+                <div class="bg-card border border-white/10 rounded-xl overflow-hidden">
+                    <button @click="faqOpen[2] = !faqOpen[2]"
+                        class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg">¿Necesito estar en forma para empezar?</span>
+                        <i class="fas fa-chevron-down transition-transform" :class="faqOpen[2] ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="faqOpen[2]" x-collapse class="px-6 pb-6 text-gray-400">
+                        No, por Dios. Ven tal como eres y nosotros nos encargamos del resto. Cada persona empieza desde
+                        su nivel y nuestros coaches adaptan los ejercicios para ti.
+                    </div>
+                </div>
+
+                <div class="bg-card border border-white/10 rounded-xl overflow-hidden">
+                    <button @click="faqOpen[3] = !faqOpen[3]"
+                        class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg">¿Incluyen nutrición?</span>
+                        <i class="fas fa-chevron-down transition-transform" :class="faqOpen[3] ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="faqOpen[3]" x-collapse class="px-6 pb-6 text-gray-400">
+                        Sí, porque sabemos que el ejercicio sin buena alimentación es como un gimnasio sin pesas…
+                        inútil. Nuestros planes incluyen asesoría nutricional.
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://wa.me/56928575443?text=Hola%20Sharkfit%2C%20tengo%20algunas%20dudas" target="_blank"
+                    class="inline-block bg-white/5 border border-accent px-8 py-4 font-bold uppercase text-sm hover:bg-accent hover:text-black transition-all">
+                    ¿Sigues con dudas? Escríbenos y pregunta sin miedo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-16 border-t border-white/10 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-2 mb-6">
+                        <div class="bg-accent p-1 rounded-sm">
+                            <i class="fas fa-bolt text-black text-xl"></i>
+                        </div>
+                        <span class="font-title text-2xl tracking-tighter">SHARK<span
+                                class="text-accent">FIT</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        No vendemos membresías eternas que nunca usas, te llevamos a la meta. Con 5 sedes en Santiago,
+                        tecnología de vanguardia y un equipo de coaches expertos.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent hover:text-black transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-accent hover:text-black transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-accent">Contacto</h4>
+                    <div class="space-y-3 text-sm text-gray-400">
+                        <a href="mailto:sharkfitchile@gmail.com" class="block hover:text-accent transition">
+                            <i class="fas fa-envelope mr-2"></i>
+                            sharkfitchile@gmail.com
+                        </a>
+                        <a href="https://wa.me/56935669362" target="_blank" class="block hover:text-accent transition">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            +56 9 35 669 362
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4 text-accent">Horario</h4>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <p><i class="fas fa-clock mr-2"></i> Lunes - Viernes</p>
+                        <p class="ml-6">8:00h - 22:00h</p>
+                        <p><i class="fas fa-clock mr-2"></i> Sábado</p>
+                        <p class="ml-6">9:00h - 12:00h</p>
+                        <p><i class="fas fa-clock mr-2"></i> Domingo</p>
+                        <p class="ml-6">Cerrado</p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>© 2024 Sharkfit. Todos los derechos reservados.</p>
+                <div class="flex gap-6">
+                    <a href="https://sharkfit.cl/politica-de-privacidad/" target="_blank"
+                        class="hover:text-accent transition">Privacidad</a>
+                    <a href="#" class="hover:text-accent transition">Términos</a>
+                    <a href="#" class="hover:text-accent transition">Reglamento</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+
+</html>

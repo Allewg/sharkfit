@@ -1,0 +1,28 @@
+/* Service Cards with Background Images */
+.service-card-gap {
+    background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url('../images/cardio-gap.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card-hiit {
+    background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url('../images/hiit-training.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card-sharkbox {
+    background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url('../images/sharkbox.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card-functional {
+    background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url('../images/functional.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card:hover {
+    background-size: 110% auto;
+}
