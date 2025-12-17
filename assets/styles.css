@@ -23,6 +23,18 @@
     background-position: center;
 }
 
+.service-card-focalized {
+    background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url('../images/functional.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card-musculacion {
+    background-image: linear-gradient(to top, #050505 0%, rgba(5,5,5,0.9) 50%, rgba(5,5,5,0.7) 100%), url('../images/hero-gym.png');
+    background-size: cover;
+    background-position: center;
+}
+
 .service-card:hover {
     background-size: 110% auto;
 }
